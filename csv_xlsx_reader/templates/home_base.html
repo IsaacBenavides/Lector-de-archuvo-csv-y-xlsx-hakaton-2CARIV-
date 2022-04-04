@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="sidebar">
+    <div class="logo_content">
+        <div class="logo" id="btn_logo">
+            <i class='bx bxl-django' ></i>
+            <div class="logo_name">Excel Csv Reader</div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{% url 'dashboard' %}">
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'upload_file' %}">
+                <i class='bx bx-upload' ></i>
+                <span class="links_name">Subir archivos</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'statistics' %}">
+                <i class='bx bx-pie-chart-alt-2'></i>
+                <span class="links_name">Estadisticas</span>
+            </a>
+        </li>
+    </ul>
+    <div class="logout">
+       <ul class="logout_item">
+           <li>
+            <a href="{% url 'user:logout' %}">
+                <i class='bx bx-log-out' id ="log_out"></i>
+                <span class="links_name">Logout</span>
+            </a>
+           </li>
+       </ul>
+    </div>
+</div>
+
+<div class="home_content">
+    {% block home_content %}
+    {% endblock %}
+</div>
+{% endblock %}

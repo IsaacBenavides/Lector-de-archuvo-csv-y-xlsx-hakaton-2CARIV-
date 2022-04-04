@@ -1,0 +1,27 @@
+{% extends 'home_base.html' %}
+
+{% block Title %}Upload Files{% endblock %}
+
+{% block home_content %}
+        <div class="">
+            <div class="my-5 content-form">
+            {% if message %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+            <div class="container py-5 px-5 modified">
+                <form method="POST" enctype="multipart/form-data" class="form-group">
+                    {% csrf_token %}
+                        <h2 class="text-center my-2">Subir Archivo</h2>
+                        <div class="mb-4 mt-5">
+                            <input type="text" name="name" id="name" placeholder="Nombre del archivo" class="form-control-lg file-name">
+                        </div>
+                        <div class="mb-3 mt-4" >
+                            <input type="file" name="file" id="formFile" class="upload-file " id="formFile">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary mt-3 button">Upload</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

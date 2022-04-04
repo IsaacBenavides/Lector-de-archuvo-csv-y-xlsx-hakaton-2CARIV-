@@ -1,0 +1,46 @@
+{% extends 'home_base.html' %}
+{% block Title %} List Excel {% endblock %}
+{% block home_content %}
+        <table class="styled-table tabla">
+            <thead>
+            <tr>
+                <th scope="col">Region</th>
+                <th scope="col">Country</th>
+                <th scope="col">Item Type</th>
+                <th scope="col">Sales Channel</th>
+                <th scope="col">Order Priority</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Ship Date</th>
+                <th scope="col">Units Sold</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Unit Cost</th>
+                <th scope="col">Total Revenue</th>
+                <th scope="col">Total Cost</th>
+                <th scope="col">Total Profit</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in data%}
+            <tr>
+                <td>{{item.region}}</td>
+                <td>{{item.country}}</td>
+                <td>{{item.item_type}}</td>
+                <td>{{item.sales_channel}}</td>
+                <td>{{item.order_priority}}</td>
+                <td>{{item.order_date}}</td>
+                <td>{{item.order_id}}</td>
+                <td>{{item.ship_date}}</td>
+                <td>{{item.units_sold}}</td>
+                <td>{{item.unit_price}}</td>
+                <td>{{item.unit_cost}}</td>
+                <td>{{item.total_revenue}}</td>
+                <td>{{item.total_cost}}</td>
+                <td>{{item.total_profit}}</td>
+                    
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

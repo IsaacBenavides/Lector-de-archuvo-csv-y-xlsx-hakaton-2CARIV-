@@ -1,0 +1,27 @@
+{% extends 'home_base.html' %}
+{% block Title %} List Csv {% endblock %}
+{% block home_content %}
+    <table class="styled-table tabla">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Deposits</th>
+                <th scope="col">Withdraw</th>
+                <th scope="col">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data%}
+            <tr>
+                <td>{{item.date}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.deposits}}</td>
+                <td>{{item.withdrawls}}</td>
+                <td>{{item.balance}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block Title %}Registro{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{%  static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {% if messages %} 
+                {% for message in messages %}
+                    {% if message.level == 25 %}
+                        <div class="alert alert-success">{{message}}</div>
+                    {% endif %}
+                    {% if message.level == 40 %}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% endif %}
+                {% endfor %} 
+            {% endif %}
+        <section class="signup d-flex justify-content-center">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="name" placeholder="Nombre de Usuario" class="input-text"/>
+                                {% if form.username.errors %}
+                                    {% for error in form.username.errors %}
+                                        <span class="help-block" style="color:red">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="first_name" id="name" placeholder="Nombre" class="input-text"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="last_name" id="name" placeholder="Apellido" class="input-text"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Email" class="input-text"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password1" id="pass" placeholder="Contraseña" class="input-text"/>
+                                {% if form.password1.errors %}
+                                    {% for error in form.password1.errors %}
+                                        <span class="help-block" style="color:red">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="password2" id="re_pass" placeholder="Confirmar Contraseña" class="input-text"/>
+                                {% if form.password2.errors %}
+                                    {% for error in form.password2.errors %}
+                                        <span class="help-block" style="color:red">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'images/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="{% url 'user:login' %}" class="signup-image-link">Ya tengo cuenta</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+{% endblock %}

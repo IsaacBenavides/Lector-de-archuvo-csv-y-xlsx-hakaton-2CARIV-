@@ -1,0 +1,33 @@
+{% extends 'home_base.html' %}
+{% load reader_extras %}
+{% block Title %}Dashboard{% endblock %}
+
+{% block home_content %}
+        <div class="my-5">
+            <h4 class="text-center my-2">Archivos Subidos</h4>
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for file in files %}
+                    <tr>
+                        <td>{{file|show_index:files}}</td>
+                        <td>{{ file.name }}</td>
+                        <td>{{ file.file }}</td>
+                        <td>{{ file.upload_date }}</td>
+                        <td>{{ file.user }}</td>
+                        <td><a href="{% url 'list_data' file.id %}" class="icon-view"><i class="fas fa-eye icon"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

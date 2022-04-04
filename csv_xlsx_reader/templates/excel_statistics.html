@@ -1,0 +1,99 @@
+{% extends 'statistics.html' %}
+
+    
+{% block statistics_content %}
+
+<div class="row mx-3">
+    <div class="col-3 custom-card mx-3 my-3">
+        <div>
+            <div style="width: 100px;height: 100px;border-radius: 50%;background-color: #009879; display: flex;justify-content: center;position: relative;" class="my-3">
+                <i class='bx bx-window' style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color: white;font-size: 50px;"></i>
+            </div>
+            <p class="card-text h1">{{ rows_imported }}</p>
+            <h5 class="card-title">Filas Importadas</h5>
+        </div>
+    </div>
+    <div class="col-3 custom-card mx-3 my-3" style="border: none;">
+        <div>
+            <div style="width: 100px;height: 100px;border-radius: 50%;background-color: #009879; display: flex;justify-content: center;position: relative;" class="my-3">
+                <i class='bx bx-sitemap' style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color: white;font-size: 50px;"></i>
+            </div>
+            <p class="card-text h1">Item Type</p>
+            <h5 class="card-title"><a href="" style="color: #009879;" data-toggle="modal" data-target="#exampleModalCenter" onclick="itemTypeFunction()">Click me</a></h5>
+        </div>
+    </div>
+    <div class="col-3 custom-card mx-3 my-3">
+        <div>
+            <div style="width: 100px;height: 100px;border-radius: 50%;background-color: #009879; display: flex;justify-content: center;position: relative;" class="my-3">
+                <i class='bx bxs-city' style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color: white;font-size: 50px;"></i>
+            </div>
+            <p class="card-text h1">{{ regions|length }}</p>
+            <h5 class="card-title">Regions</h5>
+            <h5 class="card-title"><a href="" style="color: #009879;" data-toggle="modal" data-target="#exampleModalCenter" onclick="regionFunction()">Click me</a></h5>
+        </div>
+    </div>
+
+    <div class="col-3 custom-card mx-3 my-3">
+        <div>
+            <div style="width: 100px;height: 100px;border-radius: 50%;background-color: #009879; display: flex;justify-content: center;position: relative;" class="my-3">
+                <i class='bx bx-border-all' style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color: white;font-size: 50px;"></i>
+            </div>
+            <p class="card-text h1">{{ orders|length }}</p>
+            <h5 class="card-title">Order Priority</h5>
+        </div>
+    </div>
+    <div class="col-3 custom-card mx-3 my-3" style="border: none;">
+        <div>
+            <div style="width: 100px;height: 100px;border-radius: 50%;background-color: #009879; display: flex;justify-content: center;position: relative;" class="my-3">
+                <i class='bx bx-sitemap' style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%); color: white;font-size: 50px;"></i>
+            </div>
+            <p class="card-text h1">Order Priority by Item Type</p>
+            <h5 class="card-title"><a href="" style="color: #009879; " data-toggle="modal" data-target="#exampleModalCenter" onclick="orderByType()">Click me</a></h5>
+        </div>
+    </div>
+    
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+    function itemTypeFunction(){
+        document.getElementById("exampleModalLongTitle").innerHTML = "Item Type";
+        document.getElementById("modal-body").innerHTML = "<div style='padding:0 20px;'><ul>{% for item in item_types %}<li>{{item}}</li>{% endfor %}</ul></div>";
+    }
+
+    function regionFunction(){
+        document.getElementById("exampleModalLongTitle").innerHTML = "Regions";
+        document.getElementById("modal-body").innerHTML = "<div style='padding:0 20px;'><ul>{% for region in regions %}<li>{{region}}</li>{% endfor %}</ul></div>";
+    }
+
+    function orderByType(){
+        document.getElementById("exampleModalLongTitle").innerHTML = "Order Priority by Item Type";
+        document.getElementById("modal-body").innerHTML = "<div style='padding:0 20px;'><ul>{% for key, value in order_by_items.items %}<li>{{key}}: {{value|length}}</li>{% endfor %}</ul></div>";
+    }
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</script>
+{% endblock %}

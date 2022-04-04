@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    height: 100%;
+    width: 280px;
+    background-color: #11101d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 6px 14px;
+    transition: all 0.4s ease;
+}
+
+.sidebar .logo_content .logo {
+    color: white;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+}
+
+.logo_content .logo i {
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+.logo_content .logo .logo_name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sidebar ul {
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+}
+
+.sidebar ul li a {
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.sidebar ul li a:hover {
+    background-color: white;
+    color: #11101d;
+}
+
+.sidebar ul li a i{
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    font-size: 25px;
+    margin: 0 0 0 10px;
+}
+
+.sidebar .logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+}
+
+.sidebar .logout:hover {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+}
+
+
+
+.home_content {
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 330px);
+    left: 300px;
+    right: 30px;
+    overflow-y: auto;
+}

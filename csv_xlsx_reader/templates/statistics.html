@@ -1,0 +1,26 @@
+{% extends 'home_base.html' %}
+
+{% block Title %}Estadisticas{% endblock %}
+
+{% block home_content %}
+
+    <div class="mt-5 form-group" >
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label class="label">Selecciona un archivo</label>
+            </div>
+            <select name="file-id" id="" class="selectpicker form-control" style="height: 60px;border-radius: 10px;padding: 0 20px;">
+                <option selected>Elige un archivo</option>
+                {% for file in files %}
+                    <option value="{{ file.id }}">{{ file.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Cargar Estadisticas" class="btn btn-primary mt-3 button" style="font-size: 20px;font-weight: bold;">
+        </form>
+        <br/>
+        <br/>
+        {% block statistics_content %}
+        {% endblock %}
+    </div>
+{% endblock %}
